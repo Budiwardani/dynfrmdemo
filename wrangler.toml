@@ -1,27 +1,8 @@
-# Wrangler configuration for Cloudflare Pages
-name = "dynfrm-demo"
-type = "javascript"
-main = "src/main.jsx"
+name = "dynfrmdemo"
+compatibility_date = "2026-08-18"
 
-# Build configuration
-[env.production]
-  name = "dynfrm-demo"
-  routes = [
-    { pattern = "example.com", zone_name = "example.com" }
-  ]
+[assets]
+directory = "./dist"
 
-[build]
-  command = "npm install && npm run build"
-  cwd = "./"
-  root = "./"
-
-[build.upload]
-  format = "service-worker"
-
-# Environment variables for production
-[env.production.vars]
+[vars]
 VITE_API_URL = "https://api.dynfrm.example.com"
-
-# For local development
-[env.development.vars]
-VITE_API_URL = "http://localhost:8000"
