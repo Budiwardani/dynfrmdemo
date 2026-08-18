@@ -1,0 +1,27 @@
+# Wrangler configuration for Cloudflare Pages
+name = "dynfrm-demo"
+type = "javascript"
+main = "src/main.jsx"
+
+# Build configuration
+[env.production]
+  name = "dynfrm-demo"
+  routes = [
+    { pattern = "example.com", zone_name = "example.com" }
+  ]
+
+[build]
+  command = "npm install && npm run build"
+  cwd = "./"
+  root = "./"
+
+[build.upload]
+  format = "service-worker"
+
+# Environment variables for production
+[env.production.vars]
+VITE_API_URL = "https://api.dynfrm.example.com"
+
+# For local development
+[env.development.vars]
+VITE_API_URL = "http://localhost:8000"
